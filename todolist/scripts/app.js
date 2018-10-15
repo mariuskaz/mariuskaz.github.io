@@ -260,11 +260,11 @@ window.onload = function() {
             user: '',
             data: [],
             items: [
-                { name: 'Inbox', route: 'Inbox' },
-                { name: 'Today', route: 'Today' },
-                { name: 'Next 7 days', route: 'Next7days' },
-                { name: 'Not sheduled', route: 'noDate' },
-                { name: 'Timeline', route: 'Timeline' }
+                { name: 'Inbox', route: 'inbox' },
+                { name: 'Today', route: 'today' },
+                { name: 'Next 7 days', route: 'next7days' },
+                { name: 'Not sheduled', route: 'nodate' },
+                { name: 'Timeline', route: 'timeline' }
             ],
             activeTask: { 
                 hide: function() {} 
@@ -349,13 +349,13 @@ window.onload = function() {
             getProjects: function() {
                     return this.tasks.filter( function(task) {
                         return task.label.toLowerCase() == "project" }).map( function(task) {
-                            return { name: task.description.substring(0,18), route: "/Projects/"+task.description } }).sort(function(a,b){
+                            return { name: task.description.substring(0,18), route: "/projects/"+encodeURI(task.description) } }).sort(function(a,b){
                                 return a.name > b.name
                 })
             },
             getFilters: function() {
                 var users = [], items = [], path = this.$route.path.split("/")
-                var route = path[1] == 'Projects' ? route =  path[1] + "/" +path[2] + "/User" : path[1]
+                var route = path[1] == 'projects' ? route =  path[1] + "/" +path[2] : path[1] 
                 $.each(this.tasks, function(key, task){
                     if (task.assign && users.indexOf(task.assign) == -1) {
                         items.push({ name: "Assigned to " + task.assign, route: route+"/"+task.assign })
@@ -413,16 +413,16 @@ window.onload = function() {
             getContents: function(folder) {
                 var taskslist = []
                 switch (folder) {
-                    case "Inbox":
+                    case "inbox":
                         taskslist.push({ blank: true, tasks: app.getTasks() })
                         break
-                    case "Today":
+                    case "today":
                         var overdue = app.getTasks({ daysLeft : -1 })
                         if (overdue.length > 0)
                             taskslist.push({ header: 'Overdue', style: 'red',  tasks: overdue  })
                         taskslist.push({ header: 'Today', blank: true, tasks: app.getTasks({ daysLeft : 0 }) })
                         break
-                    case "Next7days":
+                    case "next7days":
                         var overdue = app.getTasks({ daysLeft : -1 })
                         if (overdue.length > 0)
                             taskslist.push({ header: 'Overdue', style: 'red',  tasks: overdue })
@@ -434,7 +434,7 @@ window.onload = function() {
                         taskslist.push({ header: app.getLabel({ day: 5 }), blank: true, tasks: app.getTasks({ daysLeft : 5 }) })
                         taskslist.push({ header: app.getLabel({ day: 6 }), blank: true, tasks: app.getTasks({ daysLeft : 6 }) })
                         break
-                    case "Projects":
+                    case "projects":
                         taskslist.push({ blank: true, tasks:app.getTasks({ project : this.$route.params.id }) })
                         break
                     case "search":
@@ -465,20 +465,19 @@ window.onload = function() {
         router : new VueRouter({
             //mode: 'history',
             routes : [
-                { path: '/', redirect: '/Today' },
-                { path: '/Inbox', component: view.tasks, meta: { title: 'Inbox' } },
-                { path: '/Today', component: view.tasks, meta: { title: 'Today' } },
-                { path: '/Next7days', component: view.tasks, meta: { title: 'Next 7 days' } },
-                { path: '/Timeline', component: view.timeline },
-                { path: '/Timeline/:user', component: view.timeline },
-                { path: '/Projects/:id', name: 'project', component: view.tasks },
-                { path: '/Projects/:id/User/:user', component: view.tasks },
-                { path: '/Inbox/:user', component: view.tasks, meta: { title: 'Inbox' } },
-                { path: '/Today/:user', component: view.tasks, meta: { title: 'Today' } },
-                { path: '/Next7days/:user', component: view.tasks, meta: { title: 'Next 7 days' } },
-                { path: '/noDate', meta: { title: 'Under construction' } },
-                { path: '/search', component: view.tasks, meta: { title: 'Search results' } },
-                { path: '*', component: view.none, redirect_disabled: '/Today' }
+                { path: '/', redirect: '/today' },
+                { path: '/inbox', component: view.tasks, meta: { title: 'Inbox' } },
+                { path: '/today', component: view.tasks, meta: { title: 'Today' } },
+                { path: '/next7days', component: view.tasks, meta: { title: 'Next 7 days' } },
+                { path: '/timeline', component: view.timeline },
+                { path: '/timeline/:user', component: view.timeline },
+                { path: '/projects/:id', name: 'project', component: view.tasks },
+                { path: '/projects/:id/:user', component: view.tasks },
+                { path: '/inbox/:user', component: view.tasks, meta: { title: 'Inbox' } },
+                { path: '/today/:user', component: view.tasks, meta: { title: 'Today' } },
+                { path: '/next7days/:user', component: view.tasks, meta: { title: 'Next 7 days' } },
+                { path: '/nodate', meta: { title: 'Not sheduled' } },
+                { path: '/search', component: view.tasks, meta: { title: 'Search results' } }
             ],
             scrollBehavior(to, from, savedPosition) {
                 document.getElementById("view").scrollTop = 0;
@@ -489,7 +488,7 @@ window.onload = function() {
             '$route' (to, from) {
                 this.user =  this.$route.params.user ? this.$route.params.user : ''
                 this.keyword = this.filter = this.$route.query.text ? this.$route.query.text : ''
-                this.project = this.$route.params.id ? this.$route.params.id : ''
+                this.project = this.$route.params.id ? decodeURI(this.$route.params.id) : ''
             }
         }
         
