@@ -1,0 +1,390 @@
+body {
+  margin:-2px;
+  overflow:hidden;
+}
+div {
+    padding:2px 0;
+}
+a, a:visited {
+    color:black;
+}
+.router-link-active {
+  font-weight:bold;
+}
+p:hover {
+    color:black;
+    cursor:pointer;
+    text-decoration:underline;
+}
+input[type="checkbox"] {
+    transform:scale(1.3);
+    vertical-align:top;
+    margin-top:7px;
+}
+h3 {
+    margin:20px 5px 5px;
+}
+.fa {
+    cursor:pointer;
+    font-size:14px;
+    margin-right:5px;
+    padding-left:5px;
+}
+.fa-icon {
+    font-size:24px;
+}
+.loading {
+    margin-left:10px;
+    color:lightgray;
+}
+.bold {
+    font-weight:bold;
+}
+.rotate {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    float:left;
+}
+.red {
+    color:indianred;
+}
+.orange {
+    color: darkOrange;
+}
+.gray {
+    color:gray;
+    font-size:9pt;
+    font-weight:normal;
+    margin-left:5px;
+}
+.my-top {
+    padding-top:20px;
+    font-weight:bold;
+}
+.work-space {
+    width:900px;
+    margin:auto;
+    top:0;left:0;right:0;
+}
+#timeline {
+    display:inline-block;
+    height:90vh; /*600px; */
+    width:650px;
+}
+.top-icon {
+    display:inline-block;
+    color:whitesmoke;
+    font-size:20pt;
+    cursor:pointer;
+    padding:5px;
+}
+.top-search {
+    background:#303030;
+    border:0;
+    color:whitesmoke;
+    line-height:20px;
+    height:20px;
+    width:300px;
+    outline:none;
+    margin-left:170px;
+    padding:4px;
+    vertical-align:top;
+    text-transform:capitalize;
+}
+.top-search:hover {
+    background:gray;
+}
+.top-search:focus {
+    background:white;
+    color:black;
+}
+.on-right {
+    float:right;
+    top:0;
+    right:0;
+}
+.my-header {
+    background:#303030;
+    color:whitesmoke;
+    font:calibri;
+    font-weight:bold;
+    padding:4px;
+    margin:0;
+}
+.my-title {
+    display:inline-block;
+    color:white;
+    font-size:20pt;
+    cursor:pointer;
+    width:190px;
+        background:lightgray;
+}
+.my-sidebar {
+    float:left;
+    padding:5px;
+    font-size:11pt;
+    line-height:15pt;
+    width:200px;
+    height:90vh;
+    overflow-y:auto;
+}
+.my-sidebar p:hover {
+    font-weight:bold;
+}
+.my-project {
+    heightt:10pt;
+    font-sizee:9pt;
+    colorr:gray;
+    margin-left:19px;
+}
+.my-tasks {
+    display:inline-block;
+    margin:0 auto;
+    height:90vh;
+    width:690px;
+    overflow-y:auto;
+}
+.my-task {
+    border-bottom:1px solid lightgray;
+    padding:5px 0px 5px 5px;
+    mmmin-width:440px;
+}
+.my-link {
+    cursor: pointer;
+}
+.my-link:hover {
+    text-decoration: underline;
+}
+.my-button {
+    border-radius: 4px;
+    cursor:pointer;
+    color:gray;
+    display:inline-block;
+    font-weight:bold;
+    padding:5px 10px;
+    min-width: 50px;
+    text-align:center;
+}
+.my-button:hover {
+    color:black;
+    text-decoration:underline;
+}
+.dark-theme {
+    background:#303030;
+    color:white;
+}
+.dark-theme:hover {
+    color:white;
+    text-decoration:none;
+}
+.long {
+    width:310px;
+}
+.long-text {
+    border:0;
+    line-height:22px;
+    height:22px;
+    width:300px;
+    padding:4px;
+    outline:none;
+}
+.short-date {
+    display:inline-block;
+    cursor:pointer;
+    border:0;
+    line-height:22px;
+    height:22px;
+    width:50px;
+    padding:4px;
+    outline:none;
+}
+.short-text {
+    border:0;
+    line-height:22px;
+    height:22px;
+    width:50px;
+    padding:4px;
+    outline:none;
+}
+.normal-text {
+    border:0;
+    line-height:22px;
+    height:22px;
+    width:60px;
+    padding:4px;
+    outline:none;
+}
+.my-icon {
+    float:right;
+    height:20px;
+    line-height:20px;
+    width:20px;
+    border-radius:25px;
+    borderrr:1px solid silver;
+    color:dimgray;
+    text-align:center;
+    padding:2px;
+    overflow:hidden;
+    font-size:7pt;
+    cursor:pointer;
+    vertical-align:middle;
+    margin:5px 2px;
+    font-size:14pt;
+}
+.my-icon:hover {
+    background:whitesmoke;
+    color:black;
+}
+.red-icon {
+    float:right;
+    height:20px;
+    line-height:20px;
+    width:20px;
+    border-radius:25px;
+    border:1px solid tomato;
+    color:tomato;
+    text-align:center;
+    padding:2px;
+    overflow:hidden;
+    font-size:7pt;
+    cursor:pointer;
+    vertical-align:middle;
+    margin:4px;
+}
+.red-icon:hover {
+    background:tomato;
+    color:white;
+}
+.my-indent {
+    padding-left:30px;
+}
+.my-indent .long-text {
+    width:275px;
+}
+.short {
+    width:280px;
+}
+.my-borders {
+    border:1px solid lightgray;
+}
+.my-border {
+    border-bottom:1px solid lightgray;
+}
+.space-holder {
+    display:inline-block;
+    height:1px;
+}
+.task-bottom {
+    position:absolute;
+    bottom:0;
+    right:0;
+}
+
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: lightgray;
+    opacity: 1;
+}
+
+/* scrollbar width */
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: gray; 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #22aadd; 
+}
+
+
+.fade-enter-active /*, .fade-leave-active */ {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0
+}
+
+
+.TreeNavigation li {
+    padding-left:1px;
+}
+
+.NavigationLevel__children li {
+    padding-left: 20px;
+}
+
+.NavigationLevel__parent {
+    font-weight:bold;
+    padding-top:0;
+}
+
+.NavigationItem {
+    color:black;
+    padding-top:0;
+}
+
+.NavigationItem--active {
+    color: red;
+}
+
+.NavigationToggle {
+    border-color: red;
+}
+
+
+
+
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (max-width: 768px) { 
+    .work-space {
+        width:760px;
+    }
+    .my-sidebar {
+        display:none;
+    }   
+    .my-title:focus .my-sidebar {
+        display:block;
+    }
+    .top-search {
+        width:250px;
+        margin-left:0px;
+        padding:4px;
+    }
+    .my-tasks {
+        padding:4px;
+        width:760px;
+    }
+}
+
+/* Medium devices (desktops, 992px and up) 
+@media (min-width: 992px) {
+    body {
+        background:yellow;
+    } 
+    
+} */
+
+/* Large devices (large desktops, 1200px and up) 
+@media (min-width: 1200px) { 
+    body {
+        background:gray;
+    }     
+} */
