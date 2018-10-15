@@ -391,7 +391,7 @@ window.onload = function() {
                     }).sort(function(a,b) {
                         return a.description > b.description
                     })
-                        
+
                 } else if (params.daysLeft != undefined) {
                     return this.tasks.filter( function(task) {
                         if (app.user.length > 0 && task.assign!= app.user) return false
@@ -404,6 +404,12 @@ window.onload = function() {
                             if (params.daysLeft == -1 && daysLeft < 0 || params.daysLeft == daysLeft ) return true
                         }
                         return false
+                    })
+
+                } else if (params.noDate) {
+                    return this.tasks.filter( function(task) {
+                        if (app.user.length > 0 && task.assign != app.user) return false
+                        return task.shedule == undefined || task.shedule.length == 0
                     })
                 }
                 return []
@@ -432,6 +438,9 @@ window.onload = function() {
                         taskslist.push({ header: app.getLabel({ day: 4 }), blank: true, tasks: app.getTasks({ daysLeft : 4 }) })
                         taskslist.push({ header: app.getLabel({ day: 5 }), blank: true, tasks: app.getTasks({ daysLeft : 5 }) })
                         taskslist.push({ header: app.getLabel({ day: 6 }), blank: true, tasks: app.getTasks({ daysLeft : 6 }) })
+                        break
+                    case "nodate":
+                        taskslist.push({ blank: true, tasks: app.getTasks({ noDate: true }) })
                         break
                     case "projects":
                         taskslist.push({ blank: true, tasks:app.getTasks({ project : this.$route.params.id }) })
@@ -475,7 +484,8 @@ window.onload = function() {
                 { path: '/inbox/:user', component: view.tasks, meta: { title: 'Inbox' } },
                 { path: '/today/:user', component: view.tasks, meta: { title: 'Today' } },
                 { path: '/next7days/:user', component: view.tasks, meta: { title: 'Next 7 days' } },
-                { path: '/nodate', meta: { title: 'Not sheduled' } },
+                { path: '/nodate', component: view.tasks, meta: { title: 'Not sheduled' } },
+                { path: '/nodate/:user', component: view.tasks, meta: { title: 'Not sheduled' } },
                 { path: '/search', component: view.tasks, meta: { title: 'Search results' } }
             ],
             scrollBehavior(to, from, savedPosition) {
