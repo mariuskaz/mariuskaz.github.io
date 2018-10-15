@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Todo</title>
+    <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/fengyuanchen/datepicker/4e929279/dist/datepicker.css" >
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://cdn.rawgit.com/fengyuanchen/datepicker/4e929279/dist/datepicker.js"></script>
+    <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/vue-tree-navigation@3.0.0/dist/vue-tree-navigation.js"></script>
+    <script src="scripts/app.js"></script>
+  </head>
+  <body>
+    <div id="app" >
+        <div class="my-header">
+            <div class="work-space">
+                <i class="fa fa-icon fa-calendar" id="menu" tabindex=1 title="Menu"></i>
+                <input class="top-search" v-model="keyword" placeholder="Quick search"  @keyup.enter="search" @keyup.escape="this.document.getElementById('menu').focus()">
+                <div class='on-right'>
+                    <i class="fa fa-icon fa-refresh" title="Refresh" @click="reload"></i>
+                    <i class="fa fa-icon fa-gear" title="Settings" @click="login"></i>
+                </div>
+            </div>
+        </div>
+        <div class="work-space">
+            <div class="my-sidebar">
+                <vue-tree-navigation :items="menu"/>
+            </div>
+            <div class="my-tasks" id="view">
+                    <router-view v-if="loaded" :key="index"></router-view>
+                    <h3 v-else class="loading">Loading, please wait...</h3>
+            </div>
+        </div>
+        <!-- TEMPLATES -->
+        <template id="taskslist">
+            <transition name="fade">
+            <div>
+                <h1>{{ title }}</h1>
+                <div v-for="taskslist in contents">
+                    <h3 v-if="taskslist.header" :class="taskslist.style">{{ taskslist.header }}</h3>
+                    <div class="my-task"></div>
+                    <list-item
+                        v-for="task in taskslist.tasks"
+                        v-bind:key="task._id"
+                        v-bind:todo="task">  
+                    </list-item>
+                    <todo-item v-if="taskslist.blank"></todo-item>
+                </div>
+            </div>
+            </transition>
+        </template>
+        <template id="task">
+            <div v-if="visible" class="my-task" :class="position" draggable="true" @drag.prevent="drag" @drop.prevent="drop" @dragover.prevent>
+                <input v-if="!modify" type="checkbox">
+                <div style="display:inline">
+                    <input v-model="todo.description" class="long-text" :class="{ 'my-borders': modify, 'red': priority }" @focus="show" @keyup.enter="save" @keyup.escape="hide">
+                    <data-picker v-model="todo.due" placeholder="shedule" @show="show" @click="show"></data-picker>
+                    <input v-model="todo.duration" class="short-text" :class="{ 'my-border': modify }"  placeholder="h or min" @focus="show">
+                    <input v-model="todo.assign" class="short-text" :class="{ 'my-border': modify }"  placeholder="assign" @focus="show">
+                    <input v-model="todo.label" class="normal-text" :class="{ 'my-border': modify, 'my-link': !modify }"  placeholder="project" :title="todo.label" @focus="goto">
+                    <div v-if="modify" class="red-icon" @click="remove" title="Delete?"><big>&#10005;</big></div>
+                    <div v-if="modify" class="on-right" style="margin-right:-10px">
+                        <div class="my-icon" title="Priority" v-if="!priority" @click="priority=true">&#9872;</div>
+                        <div class="my-icon" title="Priority" v-if="priority"  @click="priority=false" style="color:red">&#9873;</div>
+                        <div class="my-icon" title="Comments">&#9634;</div>
+                    </div>
+                    <div v-if="modify" style="display:inline-block">
+                        <div class="my-button dark-theme" @click="save">Save</div>
+                        <div class="my-button" @click="hide">Cancel</div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template id="blank">
+            <div>
+                <div v-if="blank" style='padding:5px' @blur="console.log('blur')">
+                    <input v-model="description" class="long-text my-borders" autofocus @keyup.enter="addTask" @focus="show">
+                    <data-picker v-model="shedule" @focus="show"></data-picker>
+                    <input v-model="duration" class="short-text my-border" placeholder="h or min" @keyup.enter="addTask" @focus="show">
+                    <input v-model="assign" class="short-text my-border" placeholder="assign" @keyup.enter="addTask" @focus="show">
+                    <input v-model="project" class="short-text my-border" placeholder="project" @keyup.enter="addTask" @focus="show">
+                    <div>
+                        <div class='my-button dark-theme' @click="addTask">Add</div>
+                        <div class="my-button" @click="hide">Cancel</div>
+                    </div>
+                </div>
+                <div v-if="!blank" class="my-button" style="padding:15px 7px" @click="show">&#x271A; Add task</div>
+            </div>
+        </template>
+    </div>
+  </body>
+</html>
