@@ -43,7 +43,7 @@ window.onload = function() {
             return {
                 visible: true,
                 modify: false,
-                priority: false,
+                priority: this.todo.priority,
                 subtask: this.todo.subtask
             }            
         },
@@ -93,6 +93,7 @@ window.onload = function() {
             save: function() { 
                 this.todo.shedule = this.todo.due
                 this.todo.subtask = this.subtask
+                this.todo.priority = this.priority
                 app.dbo.update(this.todo)
                 this.modify = false
             },
