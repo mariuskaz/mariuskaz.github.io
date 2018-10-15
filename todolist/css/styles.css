@@ -71,7 +71,7 @@ h3 {
 #timeline {
     display:inline-block;
     height:90vh; /*600px; */
-    width:650px;
+    width:690px;
 }
 .top-icon {
     display:inline-block;
@@ -345,7 +345,9 @@ h3 {
     border-color: red;
 }
 
-
+.datepicker-top-left, .datepicker-top-right {
+    border-top-color: gray;
+}
 
 
 

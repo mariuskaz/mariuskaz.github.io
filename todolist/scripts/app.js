@@ -151,7 +151,6 @@ window.onload = function() {
                 this.blank = false
             }
         }
-    
     })
     Vue.use(VueTreeNavigation)
     
@@ -238,7 +237,7 @@ window.onload = function() {
                     });
                     
                     chart.draw(dataTable, options);
-                    console.log("timeline")
+                    console.log("Draw timeline")
                 }
             }
         },
@@ -303,7 +302,7 @@ window.onload = function() {
                     $.ajax(this.settings).done(function (response) {
                         task._id = response._id
                         app.data.push(task);
-                        console.log("new task "+task._id)
+                        console.log(task._id+" task created")
                     });
                 },
                 update: function(task) {
