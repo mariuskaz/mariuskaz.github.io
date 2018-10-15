@@ -167,9 +167,6 @@ window.onload = function() {
                 contents : function() {
                     var folder =  this.$route.path.split("/")[1]
                     return app.getContents(folder)
-                },
-                notEmpty : function() {
-                    return this.contents.length > 0
                 }
             }
         },
@@ -327,7 +324,6 @@ window.onload = function() {
                     });
                 }
             }
-            
         },
     
         computed : {
@@ -426,14 +422,14 @@ window.onload = function() {
                         var overdue = app.getTasks({ daysLeft : -1 })
                         if (overdue.length > 0)
                             taskslist.push({ header: 'Overdue', style: 'red',  tasks: overdue  })
-                        taskslist.push({ header: 'Today', blank: true, tasks: app.getTasks({ daysLeft : 0 }) })
+                        taskslist.push({ header: 'Today', blank: true, tasks: app.getTasks({ daysLeft : 0 }), label: app.getLabel({ day: 0 }) })
                         break
                     case "next7days":
                         var overdue = app.getTasks({ daysLeft : -1 })
                         if (overdue.length > 0)
                             taskslist.push({ header: 'Overdue', style: 'red',  tasks: overdue })
-                        taskslist.push({ header: 'Today', blank: true, tasks: app.getTasks({ daysLeft : 0 }) })
-                        taskslist.push({ header: 'Tomorrow', blank: true, tasks: app.getTasks({ daysLeft : 1 }) })
+                        taskslist.push({ header: 'Today', blank: true, tasks: app.getTasks({ daysLeft : 0 }), label: app.getLabel({ day: 0 }) })
+                        taskslist.push({ header: 'Tomorrow', blank: true, tasks: app.getTasks({ daysLeft : 1 }), label: app.getLabel({ day: 1 }) })
                         taskslist.push({ header: app.getLabel({ day: 2 }), blank: true, tasks: app.getTasks({ daysLeft : 2 }) })
                         taskslist.push({ header: app.getLabel({ day: 3 }), blank: true, tasks: app.getTasks({ daysLeft : 3 }) })
                         taskslist.push({ header: app.getLabel({ day: 4 }), blank: true, tasks: app.getTasks({ daysLeft : 4 }) })

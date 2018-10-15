@@ -43,7 +43,7 @@
             <div>
                 <h1>{{ title }}</h1>
                 <div v-for="taskslist in contents">
-                    <h3 v-if="taskslist.header" :class="taskslist.style">{{ taskslist.header }}</h3>
+                    <h3 v-if="taskslist.header" :class="taskslist.style">{{ taskslist.header }}<span class="gray"> {{ taskslist.label }}</span></h3>
                     <div class="my-task"></div>
                     <list-item
                         v-for="task in taskslist.tasks"
@@ -65,7 +65,7 @@
                     <input v-model="todo.assign" class="short-text" :class="{ 'my-border': modify }"  placeholder="assign" @focus="show">
                     <input v-model="todo.label" class="normal-text" :class="{ 'my-border': modify, 'my-link': !modify }"  placeholder="project" :title="todo.label" @focus="goto">
                     <div v-if="modify" class="red-icon" @click="remove" title="Delete?"><big>&#10005;</big></div>
-                    <div v-if="modify" class="on-right" style="margin-right:-10px">
+                    <div v-if="modify" class="on-right">
                         <div class="my-icon" title="Priority" v-if="!priority" @click="priority=true">&#9872;</div>
                         <div class="my-icon" title="Priority" v-if="priority"  @click="priority=false" style="color:red">&#9873;</div>
                         <div class="my-icon" title="Comments">&#9634;</div>
