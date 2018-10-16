@@ -110,43 +110,28 @@ window.onload = function() {
             return {
                 blank: false,
                 description : "", 
-                shedule: "", 
+                shedule: this.due, 
                 duration: "", 
-                assigned: "",
-                label: ""
+                assign: app.user,
+                label: app.project
             } 
-        },
-        computed: {
-            assign: {
-                get: function() {
-                    return app.user
-                },
-                set: function(value) {
-                    this.assigned = value
-                }
-            },
-            project: function() {
-                return app.project
-            }
         },
         methods: {
             addTask: function(e) {
                 var task = { 
                     description: this.description, 
-                    label: this.project, 
+                    label: this.label, 
                     shedule:  this.shedule, 
-                    due: this.due,
                     duration:  this.duration,
                     assign:  this.assign
                 }
                 app.dbo.insert(task)
-                this.description = this.duration = this.assign = this.folder = ""
+                this.description = this.duration = this.assign = this.label = ""
             },
             show: function(e) {
                 if (app.activeTask != this) app.activeTask.hide()
                 app.activeTask = this
                 this.blank = true
-                this.shedule = this.due
             },
             hide: function(e) {
                 this.blank = false
@@ -343,10 +328,10 @@ window.onload = function() {
     
         methods: {
             getProjects: function() {
-                    return this.tasks.filter( function(task) {
-                        return task.label.toLowerCase() == "project" }).map( function(task) {
-                            return { name: task.description.substring(0,18), route: "/projects/"+encodeURI(task.description) } }).sort(function(a,b){
-                                return a.name > b.name
+                return [... new Set(this.tasks.filter( function(task) {
+                    return task.label.length > 0 }).map( function(task) {
+                        return task.label }))].sort().map(function(label) {
+                            return { name: label.substring(0,18), route: "/projects/"+encodeURI(label) }
                 })
             },
             getFilters: function() {
