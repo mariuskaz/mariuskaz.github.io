@@ -443,7 +443,7 @@ window.onload = function() {
                         taskslist.push({ blank: true, tasks:app.getTasks({ project : this.$route.params.id }) })
                         break
                     case "search":
-                        taskslist.push({ blank: true, tasks:app.getTasks({ filter : this.filter }) })
+                        taskslist.push({ blank: false, tasks:app.getTasks({ filter : this.filter }) })
                 }
                 return taskslist
             }, 
@@ -463,7 +463,7 @@ window.onload = function() {
             },
     
             login: function() {
-                window.location.assign('https://tasks-db97.restdb.io/home/editview/index?devmode=true&tab=code')  
+                window.location.assign('https://tasks-db97.restdb.io/home/db/')  
             }
         },
         
