@@ -2,4 +2,4 @@
 
 > Vue.js todolist demo
 
-Just another vue todolist demo includes google timeline.
+https://mariuskaz.github.io/todolist
