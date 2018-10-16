@@ -126,7 +126,7 @@ window.onload = function() {
                     assign:  this.assign
                 }
                 app.dbo.insert(task)
-                this.description = this.duration = this.assign = this.label = ""
+                this.description = this.duration = ""
             },
             show: function(e) {
                 if (app.activeTask != this) app.activeTask.hide()
