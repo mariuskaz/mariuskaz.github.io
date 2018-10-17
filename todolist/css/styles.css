@@ -1,96 +1,54 @@
 body {
-  margin:-2px;
-  overflow:hidden;
+    color: #222;
+    font: 13px/18px arial, sans-serif;
+    margin: -2px;
+    overflow-x:hidden;
 }
 div {
-    padding:2px 0;
-}
-a, a:visited {
-    color:black;
-}
-.router-link-active {
-  font-weight:bold;
-}
-p:hover {
-    color:black;
-    cursor:pointer;
-    text-decoration:underline;
-}
-input[type="checkbox"] {
-    transform:scale(1.3);
-    vertical-align:top;
-    margin-top:7px;
+    display:block;
 }
 h3 {
-    margin:20px 5px 5px;
+    margin:30px 5px 5px;
 }
-.fa {
-    cursor:pointer;
-    font-size:14px;
-    margin-right:5px;
-    padding-left:5px;
-}
-.fa-icon {
-    font-size:24px;
-}
-.loading {
-    margin-left:10px;
-    color:lightgray;
-}
-.bold {
-    font-weight:bold;
-}
-.rotate {
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    float:left;
-}
-.red {
-    color:indianred;
-}
-.orange {
-    color: darkOrange;
-}
-.gray {
-    color:gray;
-    font-size:9pt;
-    font-weight:normal;
-    margin-left:5px;
-}
-.my-top {
-    padding-top:20px;
-    font-weight:bold;
-}
-.work-space {
-    width:900px;
+.workspace {
+    max-width:900px;
     margin:auto;
-    top:0;left:0;right:0;
 }
-#timeline {
-    display:inline-block;
-    height:90vh; /*600px; */
-    width:690px;
-}
-.top-icon {
-    display:inline-block;
+.my-header {
+    position:fixed;
+    background:#303030;
     color:whitesmoke;
-    font-size:20pt;
-    cursor:pointer;
-    padding:5px;
+    line-height:40px;
+    width:100%;
+    z-index:999;
 }
+.my-sidebar {
+    font-size:11pt;
+    float:left;
+    line-height:15pt;
+    padding-top:60px;
+    position:fixed;
+    width:200px;
+    height:80%;
+    overflow-y:auto;
+}
+.my-view {
+    margin-left:200px;
+    padding:60px 20px;
+}
+
 .top-search {
     background:#303030;
     border:0;
     color:whitesmoke;
+    font:calibri;
     line-height:20px;
     height:20px;
     width:300px;
     outline:none;
     margin-left:170px;
     padding:4px;
-    vertical-align:top;
+    vertical-align:middle;
     text-transform:capitalize;
 }
 .top-search:hover {
@@ -105,57 +63,9 @@ h3 {
     top:0;
     right:0;
 }
-.my-header {
-    background:#303030;
-    color:whitesmoke;
-    font:calibri;
-    font-weight:bold;
-    padding:4px;
-    margin:0;
-}
-.my-title {
-    display:inline-block;
-    color:white;
-    font-size:20pt;
-    cursor:pointer;
-    width:190px;
-        background:lightgray;
-}
-.my-sidebar {
-    float:left;
-    padding:5px;
-    font-size:11pt;
-    line-height:15pt;
-    width:200px;
-    height:90vh;
-    overflow-y:auto;
-}
-.my-sidebar p:hover {
-    font-weight:bold;
-}
-.my-project {
-    heightt:10pt;
-    font-sizee:9pt;
-    colorr:gray;
-    margin-left:19px;
-}
-.my-tasks {
-    display:inline-block;
-    margin:0 auto;
-    height:90vh;
-    width:690px;
-    overflow-y:auto;
-}
 .my-task {
     border-bottom:1px solid lightgray;
     padding:5px 0px 5px 5px;
-    mmmin-width:440px;
-}
-.my-link {
-    cursor: pointer;
-}
-.my-link:hover {
-    text-decoration: underline;
 }
 .my-button {
     border-radius: 4px;
@@ -178,9 +88,6 @@ h3 {
 .dark-theme:hover {
     color:white;
     text-decoration:none;
-}
-.long {
-    width:310px;
 }
 .long-text {
     border:0;
@@ -222,7 +129,6 @@ h3 {
     line-height:20px;
     width:20px;
     border-radius:25px;
-    borderrr:1px solid silver;
     color:dimgray;
     text-align:center;
     padding:2px;
@@ -272,44 +178,134 @@ h3 {
 .my-border {
     border-bottom:1px solid lightgray;
 }
-.space-holder {
-    display:inline-block;
-    height:1px;
+
+.my-link, a, a:visited {
+    color:black;
+    cursor: pointer;
+    text-decoration:none;
 }
-.task-bottom {
-    position:absolute;
-    bottom:0;
-    right:0;
+.my-link:hover, a:hover {
+    text-decoration: underline;
 }
 
+.loading {
+    margin-left:10px;
+    color:lightgray;
+}
+
+.bold {
+    font-weight:bold;
+}
+.red {
+    color:indianred;
+}
+.gray {
+    color:gray;
+    font-size:9pt;
+    font-weight:normal;
+    margin-left:5px;
+}
+
+#timeline {
+    height:75vh;
+}
+
+/* Custom FA icons */
+.fa {
+    cursor:pointer;
+    font-size:14px;
+    margin-right:5px;
+    padding-left:5px;
+}
+.fa-icon {
+    font-size:24px;
+    vertical-align:middle;
+    padding:4px;
+    line-height:40px;
+}
+.fa-icon:hover {
+    background: rgba(100,100,100,0.7);
+}
+
+/* Custom checkbox */
+.checkbox {
+    display: inline-block;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border:1px solid #ccc;
+    border-radius:25px;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox input:checked ~ .checkmark {
+    background-color: gray; /* #2196F3; */
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width:0;
+}
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: lightgray;
     opacity: 1;
 }
-
-/* scrollbar width */
-::-webkit-scrollbar {
-    width: 0px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
-    border-radius: 10px;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: gray; 
-    border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #22aadd; 
-}
-
 
 .fade-enter-active /*, .fade-leave-active */ {
   transition: opacity .5s
@@ -318,13 +314,16 @@ h3 {
   opacity: 0
 }
 
+.router-link-active {
+    font-weight:bold;
+}
 
 .TreeNavigation li {
     padding-left:1px;
 }
 
 .NavigationLevel__children li {
-    padding-left: 20px;
+    padding-left: 2px;
 }
 
 .NavigationLevel__parent {
@@ -337,56 +336,36 @@ h3 {
     padding-top:0;
 }
 
-.NavigationItem--active {
-    color: red;
-}
-
-.NavigationToggle {
-    border-color: red;
-}
-
 .datepicker-top-left, .datepicker-top-right {
     border-top-color: gray;
 }
 
 
 
-/* Extra small devices (phones, less than 768px) */
-/* No media query since this is the default in Bootstrap */
-
 /* Small devices (tablets, 768px and up) */
 @media (max-width: 768px) { 
-    .work-space {
-        width:760px;
+    .workspace {
+        width:100%;
     }
     .my-sidebar {
         display:none;
     }   
-    .my-title:focus .my-sidebar {
-        display:block;
+    .my-view {
+        margin-left:0;
+        padding:60px 10px;
     }
     .top-search {
-        width:250px;
+        width:150px;
         margin-left:0px;
-        padding:4px;
-    }
-    .my-tasks {
-        padding:4px;
-        width:760px;
     }
 }
 
 /* Medium devices (desktops, 992px and up) 
 @media (min-width: 992px) {
-    body {
-        background:yellow;
-    } 
     
 } */
 
 /* Large devices (large desktops, 1200px and up) 
 @media (min-width: 1200px) { 
-    body {
-        background:gray;
-    }     
+    
 } */

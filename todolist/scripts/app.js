@@ -105,7 +105,7 @@ window.onload = function() {
     })
     Vue.component('todo-item', {
         props: ['due'],
-        template: blank,
+        template: entry,
         data: function() {
             return {
                 blank: false,
@@ -331,7 +331,7 @@ window.onload = function() {
                 return [... new Set(this.tasks.filter( function(task) {
                     return task.label.length > 0 }).map( function(task) {
                         return task.label }))].sort().map(function(label) {
-                            return { name: label.substring(0,18), route: "/projects/"+encodeURI(label) }
+                            return { name: label.substring(0,16), route: "/projects/"+encodeURI(label) }
                 })
             },
             getFilters: function() {
