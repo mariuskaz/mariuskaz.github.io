@@ -471,7 +471,7 @@ window.onload = function() {
                 { path: '/search', component: view.tasks, meta: { title: 'Search results' } }
             ],
             scrollBehavior(to, from, savedPosition) {
-                document.getElementById("view").scrollTop = 0;
+                return { x: 0, y: 0 }
             }
         }),
         
