@@ -76,6 +76,7 @@ h3 {
     padding:5px 10px;
     min-width: 50px;
     text-align:center;
+    margin-top:2px;
 }
 .my-button:hover {
     color:black;
