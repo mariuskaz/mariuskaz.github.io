@@ -425,7 +425,9 @@ window.onload = function() {
                         taskslist.push({ blank: true, tasks: app.getTasks({ noDate: true }) })
                         break
                     case "projects":
-                        taskslist.push({ blank: true, tasks:app.getTasks({ project : this.$route.params.id }) })
+                        taskslist.push({ blank: true, tasks:app.getTasks({ project : this.$route.params.id }).sort(function(a,b){
+                            return (a.description > b.description) - (a.description < b.description)
+                        }) })
                         break
                     case "search":
                         taskslist.push({ blank: false, tasks:app.getTasks({ filter : this.filter }) })
