@@ -29,7 +29,7 @@ h3 {
     padding-top:60px;
     position:fixed;
     width:200px;
-    height:80%;
+    height:90%;
     overflow-y:auto;
 }
 .my-view {
@@ -46,7 +46,7 @@ h3 {
     height:20px;
     width:300px;
     outline:none;
-    margin-left:170px;
+    margin-left:200px;
     padding:4px;
     vertical-align:middle;
     text-transform:capitalize;
