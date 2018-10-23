@@ -78,6 +78,10 @@ h3 {
     text-align:center;
     margin-top:2px;
 }
+.add-button {
+    padding:15px 5px;
+    color:#a0a0a0;
+}
 .my-button:hover {
     color:black;
     text-decoration:underline;
