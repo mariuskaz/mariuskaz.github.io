@@ -39,7 +39,7 @@
         <!-- TEMPLATES -->
         <template id="taskslist">
             <transition name="fade">
-            <div>
+            <div style="margin-bottom:60px">
                 <h1>{{ title }}</h1>
                 <div v-for="taskslist in contents">
                     <h3 v-if="taskslist.header" :class="taskslist.style">{{ taskslist.header }}<span class="gray"> {{ taskslist.label }}</span></h3>
