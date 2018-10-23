@@ -43,6 +43,9 @@ h3 {
 #timeline {
     height:90%;
 }
+.google-visualization-tooltip div {
+    margin:12px;
+}
 .top-search {
     background:#303030;
     border:0;

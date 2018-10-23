@@ -175,6 +175,7 @@ window.onload = function() {
                     var dataTable = new google.visualization.DataTable();
                     dataTable.addColumn({ type: "string", id: "Name" })
                     dataTable.addColumn({ type: "string", id: "Task"})
+                    dataTable.addColumn({ type: "string", role: "tooltip",'p': { 'html': true  } })
                     dataTable.addColumn({ type: "datetime", id: "Start"})
                     dataTable.addColumn({ type: "datetime", id: "End"})
                     var tasks = app.getTasks()
@@ -191,7 +192,11 @@ window.onload = function() {
                             } else {
                                 var end = new Date(2018, month, day + 1)
                             }
-                            var data = [ task.assign, task.description, start, end ]
+                            var tooltip = "<div><b>"+task.description+"</b></div><hr>"
+                            tooltip += "<div><b>"+task.assign+":</b> "+task.shedule.replace(".","/")+"<br>"
+                            var duration = task.duration ? task.duration : "1 day"
+                            tooltip += "<b>Duration:</b> "+duration+"</div>"
+                            var data = [ task.assign, task.description, tooltip, start, end ]
                             dataTable.addRow(data)
                         }
                     })
@@ -199,6 +204,7 @@ window.onload = function() {
                         timeline: { showRowLabels: true, 
                                     showBarLabels: true, 
                                     colorByRowLabel: false,
+                                    groupByRowLabel: true,
                                     singleColor: '#808080'
                         },
                         //backgroundColor: '#ffd',
@@ -221,6 +227,7 @@ window.onload = function() {
                     
                     chart.draw(dataTable, options);
                     console.log("Draw timeline")
+
                 }
             }
         },
