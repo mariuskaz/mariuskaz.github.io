@@ -43,6 +43,11 @@ window.onload = function() {
             return {
                 visible: true,
                 modify: false,
+                description: this.todo.description,
+                due: this.todo.due,
+                duration: this.todo.duration,
+                assign: this.todo.assign,
+                label: this.todo.label,
                 priority: this.todo.priority,
                 subtask: this.todo.subtask
             }            
@@ -91,7 +96,12 @@ window.onload = function() {
                 this.modify = false
             },
             save: function() { 
-                this.todo.shedule = this.todo.due
+                this.todo.description = this.description
+                this.todo.due = this.due
+                this.todo.shedule = this.due
+                this.todo.duration = this.duration
+                this.todo.assign = this.assign
+                this.todo.label = this.label
                 this.todo.subtask = this.subtask
                 this.todo.priority = this.priority
                 app.dbo.update(this.todo)

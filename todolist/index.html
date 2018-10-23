@@ -60,11 +60,11 @@
                     <input type="checkbox"><span class="checkmark"></span>
                 </label>
                 <div style="display:inline">
-                    <input v-model="todo.description" class="long-text" :class="{ 'my-borders': modify, 'red': priority }" @focus="show" @keyup.enter="save" @keyup.escape="hide">
-                    <data-picker v-model="todo.due" placeholder="shedule" @show="show" @click="show"></data-picker>
-                    <input v-model="todo.duration" class="short-text" :class="{ 'my-border': modify }"  placeholder="h or min" @focus="show">
-                    <input v-model="todo.assign" class="short-text" :class="{ 'my-border': modify }"  placeholder="assign" @focus="show">
-                    <input v-model="todo.label" class="normal-text" :class="{ 'my-border': modify, 'my-link': !modify }"  placeholder="label" :title="todo.label" @focus="goto">
+                    <input v-model="description" class="long-text" :class="{ 'my-borders': modify, 'red': priority }" @focus="show" @keyup.enter="save" @keyup.escape="hide">
+                    <data-picker v-model="due" placeholder="shedule" @show="show" @click="show"></data-picker>
+                    <input v-model="duration" class="short-text" :class="{ 'my-border': modify }"  placeholder="h or min" @focus="show">
+                    <input v-model="assign" class="short-text" :class="{ 'my-border': modify }"  placeholder="assign" @focus="show">
+                    <input v-model="label" class="normal-text" :class="{ 'my-border': modify, 'my-link': !modify }"  placeholder="label" :title="todo.label" @focus="goto">
                     <div v-if="modify" class="red-icon" @click="remove" title="Delete?"><big>&#10005;</big></div>
                     <div v-if="modify" class="on-right">
                         <div class="my-icon" title="Priority" v-if="!priority" @click="priority=true">&#9872;</div>
