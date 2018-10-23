@@ -105,7 +105,7 @@ window.onload = function() {
     })
     Vue.component('todo-item', {
         props: ['due'],
-        template: entry,
+        template: blank,
         data: function() {
             return {
                 blank: false,
@@ -314,7 +314,7 @@ window.onload = function() {
         computed : {
             menu: function() {
                 return this.items.concat([
-                    { name: 'Projects', children: this.getProjects() },
+                    { name: 'Labels', children: this.getProjects() },
                     { name: 'Filters', children: this.getFilters() }
                 ])
             },

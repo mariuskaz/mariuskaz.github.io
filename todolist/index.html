@@ -64,7 +64,7 @@
                     <data-picker v-model="todo.due" placeholder="shedule" @show="show" @click="show"></data-picker>
                     <input v-model="todo.duration" class="short-text" :class="{ 'my-border': modify }"  placeholder="h or min" @focus="show">
                     <input v-model="todo.assign" class="short-text" :class="{ 'my-border': modify }"  placeholder="assign" @focus="show">
-                    <input v-model="todo.label" class="normal-text" :class="{ 'my-border': modify, 'my-link': !modify }"  placeholder="project" :title="todo.label" @focus="goto">
+                    <input v-model="todo.label" class="normal-text" :class="{ 'my-border': modify, 'my-link': !modify }"  placeholder="label" :title="todo.label" @focus="goto">
                     <div v-if="modify" class="red-icon" @click="remove" title="Delete?"><big>&#10005;</big></div>
                     <div v-if="modify" class="on-right">
                         <div class="my-icon" title="Priority" v-if="!priority" @click="priority=true">&#9872;</div>
@@ -78,14 +78,14 @@
                 </div>
             </div>
         </script>
-        <script type="text/x-template" id="entry">
+        <script type="text/x-template" id="blank">
             <div>
                 <div v-if="blank" style='padding:5px;'>
                     <input v-model="description" class="long-text my-borders" autofocus placeholder="todo something" @keyup.enter="addTask" @focus="show">
                     <data-picker v-model="shedule" @focus="show"></data-picker>
                     <input v-model="duration" class="short-text my-border" placeholder="h or min" @keyup.enter="addTask" @focus="show">
                     <input v-model="assign" class="short-text my-border" placeholder="assign" @keyup.enter="addTask" @focus="show">
-                    <input v-model="label" class="normal-text my-border" placeholder="project" @keyup.enter="addTask" @focus="show">
+                    <input v-model="label" class="normal-text my-border" placeholder="label" @keyup.enter="addTask" @focus="show">
                     <div>
                         <div class='my-button dark-theme' @click="addTask">Add</div>
                         <div class="my-button" @click="hide">Cancel</div>
