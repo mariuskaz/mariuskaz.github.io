@@ -265,6 +265,7 @@ window.onload = function() {
                 { name: 'Not sheduled', route: 'nodate' },
                 { name: 'Timeline', route: 'timeline' }
             ],
+            taskslist : {},
             activeTask: { 
                 hide: function() {} 
             },

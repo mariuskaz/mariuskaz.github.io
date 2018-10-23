@@ -37,7 +37,7 @@
             </div>
         </div>
         <!-- TEMPLATES -->
-        <template id="taskslist">
+        <script type="text/x-template" id="taskslist">
             <transition name="fade">
             <div style="margin-bottom:60px">
                 <h1>{{ title }}</h1>
@@ -53,7 +53,7 @@
                 </div>
             </div>
             </transition>
-        </template>
+        </script>
         <script type="text/x-template" id="task">
             <div v-if="visible" class="my-task" :class="position" draggable="true" @drag.prevent="drag" @drop.prevent="drop" @dragover.prevent>
                 <label v-if="!modify" class="checkbox">
