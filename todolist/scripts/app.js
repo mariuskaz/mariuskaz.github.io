@@ -156,7 +156,7 @@ window.onload = function() {
             }
         },
         timeline: {
-            template: "<transition name='fade'><div :name='filter'><h1>Timeline</h1><div id='timeline'></div></div></transition>",
+            template: "<transition name='fade'><div class='timeline' :name='filter'><h1>Timeline</h1><div id='timeline'></div></div></transition>",
             computed: {
                 filter: function() {
                     return app.user
