@@ -193,7 +193,7 @@ window.onload = function() {
                         if ( task.shedule && task.assign.length ) {
                             var due = task.shedule.split(".")
                             var year = parseInt(due[0]), month = parseInt(due[1]) - 1, day = parseInt(due[2])
-                            var start = new Date(2018, month, day)
+                            var start = new Date(year, month, day)
                             if (task.duration && task.duration.length > 0) {
                                 var days = 0, hours = 0, min = 0
                                 if (task.duration.indexOf("h") != -1 ) hours = task.duration.split("h")[0] * 3
@@ -396,7 +396,9 @@ window.onload = function() {
                     return this.tasks.filter( function(task) {
                         if (app.user.length > 0 && task.assign!= app.user) return false
                         if (task.shedule && task.shedule.length > 0) {
-                            var deadline = new Date(task.shedule)
+                            var due = task.shedule.split(".")
+                            var year = parseInt(due[0]), month = parseInt(due[1]) - 1, day = parseInt(due[2])
+                            var deadline = new Date(year, month, day)
                             var now = new Date()
                             var today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
                             var dateOffset = (24*60*60*1000)
