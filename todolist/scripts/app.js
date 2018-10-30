@@ -6,7 +6,7 @@ window.onload = function() {
             return {
                 options: {
                     autoHide : true, 
-                    format: "mm.dd",
+                    format: "yyyy.mm.dd",
                     offset: 5,
                     weekStart: 1
                 }
@@ -192,21 +192,21 @@ window.onload = function() {
                     $.each( tasks , function( index, task ) {
                         if ( task.shedule && task.assign.length ) {
                             var due = task.shedule.split(".")
-                            var month = parseInt(due[0]) - 1, day = parseInt(due[1])
+                            var year = parseInt(due[0]), month = parseInt(due[1]) - 1, day = parseInt(due[2])
                             var start = new Date(2018, month, day)
                             if (task.duration && task.duration.length > 0) {
                                 var days = 0, hours = 0, min = 0
                                 if (task.duration.indexOf("h") != -1 ) hours = task.duration.split("h")[0] * 3
                                 if (task.duration.indexOf("min") != -1) min = task.duration.split("min")[0] * 3
-                                var end = new Date(2018, month, day, hours, min) 
+                                var finish = new Date(year, month, day, hours, min) 
                             } else {
-                                var end = new Date(2018, month, day + 1)
+                                var finish = new Date(year, month, day + 1)
                             }
                             var tooltip = "<div><b>"+task.description+"</b></div><hr>"
                             tooltip += "<div><b>"+task.assign+":</b> "+task.shedule.replace(".","/")+"<br>"
                             var duration = task.duration ? task.duration : "1 day"
                             tooltip += "<b>Duration:</b> "+duration+"</div>"
-                            var data = [ task.assign, task.description, tooltip, start, end ]
+                            var data = [ task.assign, task.description, tooltip, start, finish ]
                             dataTable.addRow(data)
                         }
                     })
@@ -396,7 +396,7 @@ window.onload = function() {
                     return this.tasks.filter( function(task) {
                         if (app.user.length > 0 && task.assign!= app.user) return false
                         if (task.shedule && task.shedule.length > 0) {
-                            var deadline = new Date("2018."+task.shedule)
+                            var deadline = new Date(task.shedule)
                             var now = new Date()
                             var today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
                             var dateOffset = (24*60*60*1000)
