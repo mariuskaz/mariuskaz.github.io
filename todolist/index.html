@@ -19,7 +19,10 @@
     <div id="app">
         <div class="my-header">
             <div class="workspace">
-                <i class="fa fa-icon fa-calendar" id="menu" tabindex=1 title="Menu"></i>
+                <i class="fa fa-icon fa-calendar logo"></i>
+                <i class="fa fa-icon fa-bars menu" title="Menu">
+                    <div class="popup"><vue-tree-navigation :items="menu"/></div>
+                </i>
                 <input class="top-search" v-model="keyword" placeholder="Quick search"  @keyup.enter="search" @keyup.escape="this.document.getElementById('menu').focus()">
                 <div class='on-right'>
                     <i class="fa fa-icon fa-refresh" title="Refresh" @click="reload"></i>
@@ -61,7 +64,7 @@
                 </label>
                 <div style="display:inline">
                     <input v-model="description" class="long-text" :class="{ 'my-borders': modify, 'red': priority }" @focus="show" @keyup.enter="save" @keyup.escape="hide">
-                    <data-picker v-model="due" placeholder="shedule" @show="show" @click="show"></data-picker>
+                    <data-picker v-model="due" class="date-normal" placeholder="shedule" @show="show" @click="show"></data-picker>
                     <input v-model="duration" class="short-text" :class="{ 'my-border': modify }"  placeholder="h or min" @focus="show">
                     <input v-model="assign" class="short-text" :class="{ 'my-border': modify }"  placeholder="assign" @focus="show">
                     <input v-model="label" class="normal-text" :class="{ 'my-border': modify, 'my-link': !modify }"  placeholder="label" :title="todo.label" @focus="goto">
@@ -70,6 +73,7 @@
                         <div class="my-icon" title="Priority" v-if="!priority" @click="priority=true">&#9872;</div>
                         <div class="my-icon" title="Priority" v-if="priority"  @click="priority=false" style="color:red">&#9873;</div>
                         <div class="my-icon" title="Comments">&#9634;</div>
+                        <data-picker class="date-small" v-model="due" placeholder="shedule" @show="show" @click="show"></data-picker>
                     </div>
                     <div v-if="modify" style="display:inline-block">
                         <div class="my-button dark-theme" @click="save">Save</div>

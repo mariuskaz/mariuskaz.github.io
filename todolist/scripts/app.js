@@ -509,4 +509,7 @@ window.onload = function() {
     }).$mount('#app')
     app.dbo.query()
     google.charts.load('current', {'packages':['timeline'], 'language': 'lt' });
+    $(".menu").click(function(){
+        $(".popup").toggle();
+    });
 }
