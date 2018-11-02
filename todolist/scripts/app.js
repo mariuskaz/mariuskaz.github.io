@@ -459,7 +459,7 @@ window.onload = function() {
             search: function() {
                 console.log("search "+this.keyword)
                 setTimeout( function() {
-                    $("#menu").focus()
+                    $("#refresh").focus()
                 }, 200);
                 this.filter = this.keyword
                 this.$router.push({ path: "/search", query: { text: this.keyword } })
@@ -471,7 +471,7 @@ window.onload = function() {
             },
     
             login: function() {
-                window.location.assign('https://tasks-db97.restdb.io/home/db/')  
+                window.location.assign('https://tasks-db97.restdb.io/home/editview/dashboard')  
             }
         },
         
@@ -503,13 +503,14 @@ window.onload = function() {
                 this.user =  this.$route.params.user ? this.$route.params.user : ''
                 this.keyword = this.filter = this.$route.query.text ? this.$route.query.text : ''
                 this.project = this.$route.params.id ? decodeURI(this.$route.params.id) : ''
+                $(".popup").hide();
             }
         }
         
     }).$mount('#app')
     app.dbo.query()
     google.charts.load('current', {'packages':['timeline'], 'language': 'lt' });
-    $(".menu").click(function(){
-        $(".popup").toggle();
+    $("#menu").click(function(){
+        $(".popup").show();
     });
 }

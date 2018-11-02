@@ -22,7 +22,7 @@ h3 {
     width:100%;
     z-index:999;
 }
-.my-sidebar {
+.my-sidebar, .popup {
     font-size:11pt;
     float:left;
     line-height:15pt;
@@ -358,7 +358,7 @@ h3 {
     display:none;
 }
 
-@media (max-width: 768px) { 
+@media (max-width: 823px) { 
     .workspace {
         width:100%;
     }
@@ -395,7 +395,7 @@ h3 {
     }
 }
 
-@media (max-width: 360px) { 
+@media (max-width: 411px) { 
     .short-text, .normal-text {
         display:none;
     }
