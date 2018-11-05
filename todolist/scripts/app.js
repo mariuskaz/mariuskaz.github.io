@@ -337,7 +337,10 @@ window.onload = function() {
                 ])
             },
             tasks: function() {
-                return this.data
+                return this.data.sort(function(a,b){
+                    if(a.priority) return -1
+                    if(!a.priority) return 1
+                })
             },
             index: function() {
                 return this.$route.meta.index  ? this.$route.meta.index : Math.floor(Math.random() * 100) + 1;
