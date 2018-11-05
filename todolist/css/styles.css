@@ -21,6 +21,7 @@ h3 {
     line-height:40px;
     width:100%;
     z-index:999;
+    box-shadow: 0 0 10px black;
 }
 .my-sidebar, .popup {
     font-size:11pt;
@@ -395,7 +396,7 @@ h3 {
     }
 }
 
-@media (max-width: 411px) { 
+@media (max-width: 568px) { 
     .short-text, .normal-text {
         display:none;
     }
@@ -408,4 +409,10 @@ h3 {
     .date-normal {
         display:none;
     }
+}
+
+@media (max-width: 320px) { 
+    .long-text {
+        width:250px;
+    } 
 }
