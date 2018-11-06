@@ -85,9 +85,9 @@
                 <div v-if="blank" style='padding:5px;'>
                     <input v-model="description" class="long-text my-borders" autofocus placeholder="todo something" @keyup.enter="addTask" @focus="show">
                     <data-picker v-model="shedule" @focus="show"></data-picker>
-                    <input v-model="duration" class="short-text my-border" placeholder="h or min" @keyup.enter="addTask" @focus="show">
-                    <input v-model="assign" class="short-text my-border" placeholder="assign" @keyup.enter="addTask" @focus="show">
-                    <input v-model="label" class="normal-text my-border" placeholder="label" @keyup.enter="addTask" @focus="show">
+                    <input v-model="duration" class="duration-text my-border" placeholder="h or min" @keyup.enter="addTask" @focus="show">
+                    <input v-model="assign" class="assign-text my-border" placeholder="assign" @keyup.enter="addTask" @focus="show">
+                    <input v-model="label" class="label-text my-border" placeholder="label" @keyup.enter="addTask" @focus="show">
                     <div>
                         <div class='my-button dark-theme' @click="addTask">Add</div>
                         <div class="my-button" @click="hide">Cancel</div>
