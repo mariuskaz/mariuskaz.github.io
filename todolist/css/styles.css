@@ -121,7 +121,7 @@ h3 {
     padding:4px;
     outline:none;
 }
-.short-text {
+.duration-text, .assign-text {
     border:0;
     line-height:22px;
     height:22px;
@@ -129,7 +129,7 @@ h3 {
     padding:4px;
     outline:none;
 }
-.normal-text {
+.label-text {
     border:0;
     line-height:22px;
     height:22px;
@@ -378,28 +378,30 @@ h3 {
         display:inline-block;
         margin-left:-2px;
     } 
-    .normal-text {
-        width:50px;
+    .label-text {
+        width:70px;
     } 
     .long-text {
         width:290px;
     }  
-
+    .duration-text {
+        display:none;
+    }
     .top-search {
         width:150px;
         margin-left:0px;
     }
 }
 
-@media (max-width: 568px) { 
-    .short-text, .normal-text {
+@media (max-width: 411px) { 
+    .duration-text, .assign-text, .label-text {
         display:none;
     }
     .date-small {
         display:inline-block;
-        margin-top:4px;
+        margin-top:3px;
         font-size:9pt;
-        text-align:right;
+        text-align:center;
     }
     .date-normal {
         display:none;
