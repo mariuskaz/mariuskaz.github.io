@@ -236,7 +236,7 @@ window.onload = function() {
                     });
                     
                     chart.draw(dataTable, options);
-                    console.log("Draw timeline")
+                    console.log("timeline")
 
                 }
             }
