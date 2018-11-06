@@ -269,6 +269,7 @@ window.onload = function() {
             activeTask: { 
                 hide: function() {} 
             },
+            popup: false,
             visible: false,
             show: false,
             drag: '',
@@ -506,14 +507,16 @@ window.onload = function() {
                 this.user =  this.$route.params.user ? this.$route.params.user : ''
                 this.keyword = this.filter = this.$route.query.text ? this.$route.query.text : ''
                 this.project = this.$route.params.id ? decodeURI(this.$route.params.id) : ''
-                $(".popup").hide();
             }
         }
         
     }).$mount('#app')
     app.dbo.query()
     google.charts.load('current', {'packages':['timeline'], 'language': 'lt' });
-    $("#menu").click(function(){
-        $(".popup").show();
+    $(".menu").click(function() {
+        $(".controls, .my-view, .my-sidebar").toggle()
+        $(".my-sidebar a").off().click(function(){
+            $(".controls, .my-view, .my-sidebar").toggle()
+        })
     });
 }

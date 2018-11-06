@@ -20,12 +20,8 @@
         <div class="my-header">
             <div class="workspace">
                 <i class="fa fa-icon fa-calendar logo"></i>
-                <i class="fa fa-icon fa-bars menu" id="menu">
-                    <div class="popup">
-                        <vue-tree-navigation :items="menu"/>
-                    </div>
-                </i>
-                <input class="top-search" v-model="keyword" placeholder="Quick search"  @keyup.enter="search" @keyup.escape="this.document.getElementById('menu').focus()">
+                <i class="fa fa-icon fa-bars menu"></i>
+                <input class="top-search controls" v-model="keyword" placeholder="Quick search"  @keyup.enter="search" @keyup.escape="this.document.getElementById('menu').focus()">
                 <div class='on-right'>
                     <i class="fa fa-icon fa-refresh" title="Refresh" @click="reload" id="refresh" tabIndex="1"></i>
                     <i class="fa fa-icon fa-gear" title="Settings" @click="login"></i>
