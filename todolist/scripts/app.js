@@ -475,7 +475,7 @@ window.onload = function() {
             },
     
             login: function() {
-                window.location.assign('https://tasks-db97.restdb.io/home/editview/dashboard/')  
+                window.location.assign('https://tasks-db97.restdb.io/home/db/tasks-db97')  
             }
         },
         
