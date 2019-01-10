@@ -56,7 +56,7 @@
             </transition>
         </script>
         <script type="text/x-template" id="task">
-            <div v-if="visible" class="my-task" :class="position" draggable="true" @drag.prevent="drag" @drop.prevent="drop" @dragover.prevent>
+            <div v-if="visible" class="my-task" :class="position" draggable="true" @drag.prevent="drag" @drop.prevent="drop" @dragover.prevent @touchmove="drag" @touchend="drop">
                 <label v-if="!modify" class="checkbox">
                     <input type="checkbox"><span class="checkmark"></span>
                 </label>
