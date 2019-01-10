@@ -475,6 +475,8 @@ window.onload = function() {
             },
             
             reshedule: function() {
+                var ask = confirm("Reshedule tasks to next day?")
+                if (ask == false) return
                 for (var n in this.data) {
                     var task = this.data[n], last = n == this.data.length - 1 ? true : false
                     if ( task.shedule && task.shedule != "" ) {
