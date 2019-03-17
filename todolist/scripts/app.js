@@ -475,13 +475,13 @@ window.onload = function() {
             },
             
             reshedule: function() {
-                var ask = confirm("Reshedule tasks to next day?")
-                if (ask == false) return
+                var days = prompt("Reshedule tasks to days:")
+                if (days == null) return
                 for (var n in this.data) {
                     var task = this.data[n], last = n == this.data.length - 1 ? true : false
                     if ( task.shedule && task.shedule != "" ) {
                         var due = task.shedule.split(".")
-                        var shedule = new Date(parseInt(due[0]),parseInt(due[1])-1,parseInt(due[2])+1)
+                        var shedule = new Date(parseInt(due[0]),parseInt(due[1])-1,parseInt(due[2])+parseInt(days))
                         shedule = shedule.toLocaleDateString().replace(/-/g,".")
                         console.log(task.shedule+" resheduling to "+shedule+"...")
                         task.shedule = shedule
