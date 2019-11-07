@@ -333,7 +333,7 @@ window.onload = function() {
         computed : {
             menu: function() {
                 return this.items.concat([
-                    { name: 'Labels', children: this.getProjects() },
+                    { name: 'Projects', children: this.getProjects() },
                     { name: 'Filters', children: this.getFilters() }
                 ])
             },
