@@ -1,6 +1,6 @@
 # Todolist
 
-> Vue.js todolist demo
+> Quick switch to Vue.js demo
 
 Just another simple todolist: [Demo on github](https://mariuskaz.github.io/todolist)
 
